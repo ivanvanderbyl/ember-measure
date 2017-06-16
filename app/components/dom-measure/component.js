@@ -1,0 +1,1 @@
+export { default } from 'ember-measure/components/dom-measure/component';

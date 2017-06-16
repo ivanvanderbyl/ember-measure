@@ -1,12 +1,32 @@
 # ember-measure
 
-This README outlines the details of collaborating on this Ember addon.
+Provides an easy to use mixin for measuring DOM elements within Ember Components,
+and responding to size changes. Internally we use a [`ResizeObserver`](https://developers.google.com/web/updates/2016/10/resizeobserver), which is a new
+type of `MutationObserver`, as such there is an included polyfill to support older browsers back
+to IE10.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-measure`
-* `npm install`
+* `ember install ember-measure`
+
+## Usage
+
+You can use this addon in two ways:
+
+### 1. As a component:
+
+```hbs
+{{dom-rect as |rect|}}
+  <p>I am {{rect.client.height}}px tall!</p>
+{{/dom-rect}}
+```
+
+### 2. Within your component:
+
+```js
+import WithContentRect from 'ember-measure/with-content-rect';
+
+```
 
 ## Running
 

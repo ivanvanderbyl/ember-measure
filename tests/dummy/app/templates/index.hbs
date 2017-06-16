@@ -1,0 +1,13 @@
+{{!-- <textarea value={{text}} oninput={{action (mut text) value="target.value"}} name="" id="" cols="30" rows="1" autoresize></textarea> --}}
+
+<button onclick={{action "toggleAnimate"}}>Animate</button>
+
+<div id="app">
+  <div>
+    {{#dom-measure as |rect|}}
+      {{display-content-rect rect=rect}}
+      <div class="square {{if isAnimating "animate"}}"></div>
+    {{/dom-measure}}
+  </div>
+  {{resize-example}}
+</div>
