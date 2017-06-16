@@ -11,6 +11,12 @@ to IE10.
 ember install ember-measure
 ```
 
+**Requirements:**
+
+- Node 6+
+- Ember 2.10+
+- Ember CLI 2.10+
+
 ## Usage
 
 You can use this addon in two ways:
