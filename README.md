@@ -5,6 +5,13 @@ and responding to size changes. Internally we use a [`ResizeObserver`](https://d
 type of `MutationObserver`, as such there is an included polyfill to support older browsers back
 to IE10.
 
+> ### Motivation
+> previously, you had to attach a listener to the document’s resize event to get notified of any change of the viewport’s dimensions. In the event handler, you would then have to figure out which elements have been affected by that change and call a specific routine to react appropriately. If you need the new dimensions of an element after a resize, you need to call getBoundingClientRect or getComputerStyle, which can cause layout thrashing if you don’t take care of batching all your reads and all your writes.
+> 
+> And then you realize that this doesn’t even cover the cases where elements change their size without the main window having been resized. For example, appending new children, setting an element’s display style to none, or similar actions can change the size of an element, its siblings or ancestors.
+> 
+> This is why ResizeObserver is a useful primitive. It reacts to changes in size of any of the observed elements, independent of what caused the change. It provides you access to the new size of the observed elements, too. Let’s get straight into it.
+
 ## Installation
 
 ```sh
