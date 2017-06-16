@@ -102,8 +102,10 @@ queried for more size information.
 
 ### `types`
 
-You can control which properties are measured when a resize occurrs by supplying
-your own list of types within your component. Defaults to `['client', 'offset', 'scroll', 'bounds', 'margin']`.
+You can control which properties are measured when a resize occurs by supplying
+your own list of types within the Component. 
+
+Defaults to `['client', 'offset', 'scroll', 'bounds', 'margin']`.
 
 ---
 
