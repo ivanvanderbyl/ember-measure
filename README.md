@@ -12,6 +12,8 @@ to IE10.
 > 
 > This is why ResizeObserver is a useful primitive. It reacts to changes in size of any of the observed elements, independent of what caused the change. It provides you access to the new size of the observed elements, too. Let’s get straight into it.
 
+This addon is semantically similar to [souporserious/react-measure](https://github.com/souporserious/react-measure) and borrows some implementation ideas from there.
+
 ## Installation
 
 ```sh
@@ -83,16 +85,25 @@ Contains the scroll offset information.
 
 **`contentRect.bounds`:**
 
-Contains the bounding box information of the element.
+Uses [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 
+to calculate bounds of the component element. You can disable this property
+by supplying a custom list of `types`.
 
 **`contentRect.margin`:**
 
-Contains the CSS margin information of the element.
+Uses [`getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle) 
+to calculate margins of the component element. You can disable this property (to avoid layout thrashing)
+by supplying a custom list of `types`.
 
 **`contentRect.entry`**
 
 Contains the `ResizeObserverEntry` for the current resize event, which can be further
 queried for more size information.
+
+### `types`
+
+You can control which properties are measured when a resize occurrs by supplying
+your own list of types within your component. Defaults to `['client', 'offset', 'scroll', 'bounds', 'margin']`.
 
 ---
 
