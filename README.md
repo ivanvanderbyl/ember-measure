@@ -29,7 +29,7 @@ You can use this addon in two ways:
 {{/dom-measure}}
 ```
 
-### 2. Within your component:
+### 2. Within a component:
 
 ```js
 import Component from 'ember-component';
@@ -62,27 +62,27 @@ export default Component.extend(WithContentRect, {
 
 The `contentRect` has the following properties:
 
-#### `contentRect.client`:
+**`contentRect.client`:**
 
 Contains the measurements of this component.
 
-#### `contentRect.offset`:
+**`contentRect.offset`:**
 
 Contains the offset position of this component from the document.
 
-#### `contentRect.scroll`:
+**`contentRect.scroll`:**
 
 Contains the scroll offset information.
 
-#### `contentRect.bounds`:
+**`contentRect.bounds`:**
 
 Contains the bounding box information of the element.
 
-#### `contentRect.margin`:
+**`contentRect.margin`:**
 
 Contains the CSS margin information of the element.
 
-#### `contentRect.entry`
+**`contentRect.entry`**
 
 Contains the `ResizeObserverEntry` for the current resize event, which can be further
 queried for more size information.
