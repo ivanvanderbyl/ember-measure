@@ -1,4 +1,4 @@
-# ember-measure
+# ember-measure [![Build Status](https://travis-ci.org/ivanvanderbyl/ember-measure.svg?branch=master)](https://travis-ci.org/ivanvanderbyl/ember-measure) [![Ember Observer Score](https://emberobserver.com/badges/ember-measure.svg)](https://emberobserver.com/addons/ember-measure) [![npm version](https://badge.fury.io/js/ember-measure.svg)](https://badge.fury.io/js/ember-measure) [![Dependency Status](https://david-dm.org/ivanvanderbyl/ember-measure.svg)](https://david-dm.org/ivanvanderbyl/ember-measure) [![devDependency Status](https://david-dm.org/ivanvanderbyl/ember-measure/dev-status.svg)](https://david-dm.org/ivanvanderbyl/ember-measure.svg#info=devDependencies)
 
 Provides an easy to use mixin for measuring DOM elements within Ember Components,
 and responding to size changes. Internally we use a [`ResizeObserver`](https://developers.google.com/web/updates/2016/10/resizeobserver), which is a new
