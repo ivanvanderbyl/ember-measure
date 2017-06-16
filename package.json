@@ -1,6 +1,6 @@
 {
   "name": "ember-measure",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provides an easy to use mixin for measuring DOM elements within Ember Components",
   "keywords": [
     "ember-addon"
