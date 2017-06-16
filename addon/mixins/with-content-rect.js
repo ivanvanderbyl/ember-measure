@@ -17,8 +17,8 @@ export default Ember.Mixin.create({
 
   init() {
     this._super(...arguments);
-    this.runloopAwareMeasure = () => {
-      run.join(this, this.measure);
+    this.runloopAwareMeasure = (entries) => {
+      run.join(this, this.measure, entries);
     };
   },
 
@@ -26,13 +26,7 @@ export default Ember.Mixin.create({
    * Called once per run loop when this element has resized
    * @param {DOMContentRect} The DOM content rect
    */
-  didResize(/*rect*/){
-    if (this._t0) {
-      let _t1 = performance.now();
-      console.log(_t1 - this._t0);
-      this._t0 = null;
-    }
-  },
+  didResize(/* rect */){},
 
   /**
    * The coordinate Rect of this element
@@ -44,8 +38,7 @@ export default Ember.Mixin.create({
     this._super.apply(...arguments);
     this._resizeObserver = new ResizeObserver(this.runloopAwareMeasure)
     this._resizeObserver.observe(this.element);
-
-    this._t0 = performance.now();
+    this.runloopAwareMeasure();
   },
 
   willDestroyElement() {
@@ -54,7 +47,9 @@ export default Ember.Mixin.create({
   },
 
   measure(entries) {
-    if (!this.element) {return}
+    if (!this.element) {
+      return;
+    }
 
     let contentRect = getContentRect(
       this.element,
@@ -62,7 +57,7 @@ export default Ember.Mixin.create({
     )
 
     if (entries) {
-      contentRect.entry = entries[0].contentRect
+      contentRect.entry = entries[0].contentRect;
     }
 
     this.set('contentRect', contentRect);
