@@ -7,7 +7,9 @@ to IE10.
 
 ## Installation
 
-* `ember install ember-measure`
+```sh
+ember install ember-measure
+```
 
 ## Usage
 
@@ -16,17 +18,72 @@ You can use this addon in two ways:
 ### 1. As a component:
 
 ```hbs
-{{dom-rect as |rect|}}
+{{dom-measure as |rect|}}
   <p>I am {{rect.client.height}}px tall!</p>
-{{/dom-rect}}
+{{/dom-measure}}
 ```
 
 ### 2. Within your component:
 
 ```js
+import Component from 'ember-component';
 import WithContentRect from 'ember-measure/with-content-rect';
 
+export default Component.extend(WithContentRect, {
+  didResize(contentRect) {
+    // contentRect contains DOMContentRects for each of client, 
+    // offset, scroll, bounds, margin.
+  }
+});
 ```
+
+There's also a `contentRect` property which is updated whenever a change is made.
+
+You could, for example, use this to fetch the `width` and `height` of the element:
+
+```js
+import Component from 'ember-component';
+import computed from 'ember-computed';
+import WithContentRect from 'ember-measure/with-content-rect';
+
+export default Component.extend(WithContentRect, {
+  width: computed.reads('contentRect.client.width'),
+  height: computed.reads('contentRect.client.height'),
+});
+```
+
+### `contentRect`
+
+The `contentRect` has the following properties:
+
+#### `contentRect.client`:
+
+Contains the measurements of this component.
+
+#### `contentRect.offset`:
+
+Contains the offset position of this component from the document.
+
+#### `contentRect.scroll`:
+
+Contains the scroll offset information.
+
+#### `contentRect.bounds`:
+
+Contains the bounding box information of the element.
+
+#### `contentRect.margin`:
+
+Contains the CSS margin information of the element.
+
+#### `contentRect.entry`
+
+Contains the `ResizeObserverEntry` for the current resize event, which can be further
+queried for more size information.
+
+---
+
+**Take a look at the dummy app for a working example.**
 
 ## Running
 
