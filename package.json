@@ -1,7 +1,7 @@
 {
   "name": "ember-measure",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Provides an easy to use mixin for measuring DOM elements within Ember Components",
   "keywords": [
     "ember-addon"
   ],
@@ -34,6 +34,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.4.0",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.0.0",
+    "ember-cli-release": "^1.0.0-beta.2",
     "ember-cli-sass": "^6.2.0",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
