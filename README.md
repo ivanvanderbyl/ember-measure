@@ -87,29 +87,35 @@ Contains the scroll offset information.
 
 Uses [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 
 to calculate bounds of the component element. You can disable this property
-by supplying a custom list of `types`.
+by supplying a custom list of `rectTypes`.
 
 **`contentRect.margin`:**
 
 Uses [`getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle) 
 to calculate margins of the component element. You can disable this property (to avoid layout thrashing)
-by supplying a custom list of `types`.
+by supplying a custom list of `rectTypes`.
 
 **`contentRect.entry`**
 
 Contains the `ResizeObserverEntry` for the current resize event, which can be further
 queried for more size information.
 
-### `types`
+### `rectTypes`
 
 You can control which properties are measured when a resize occurs by supplying
-your own list of types within the Component. 
+your own list of `rectTypes` within the Component. 
 
 Defaults to `['client', 'offset', 'scroll', 'bounds', 'margin']`.
 
 ---
 
 **Take a look at the dummy app for a working example.**
+
+## Caviates
+
+The Polyfill used by this library doesn't observe SVG changes correctly. To work
+around this, put the SVG you want to measure inside a DIV and measure the div, then
+use the observerd measurements to fill the SVG width and height to match the DIV.
 
 ## Running
 
