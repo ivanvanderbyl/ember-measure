@@ -13,7 +13,7 @@ const types = [
 
 export default Ember.Mixin.create({
 
-  types,
+  rectTypes: types,
 
   init() {
     this._super(...arguments);
@@ -53,7 +53,7 @@ export default Ember.Mixin.create({
 
     let contentRect = getContentRect(
       this.element,
-      this.types
+      this.rectTypes
     )
 
     if (entries) {
