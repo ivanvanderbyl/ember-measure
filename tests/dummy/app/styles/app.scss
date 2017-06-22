@@ -14,6 +14,12 @@ button {
 #app {
   max-width: 800px;
   margin: 0 auto;
+
+  .chart {
+    height: 200px;
+    width: 100%;
+    display: 'block';
+  }
 }
 
 .measure-example {
@@ -35,6 +41,7 @@ button {
   width: 50%;
   height: 300px;
   background: orange;
+  border-radius: 3px;
 }
 
 .animate {
