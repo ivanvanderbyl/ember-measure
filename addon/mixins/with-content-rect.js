@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ResizeObserver from 'resize-observer';
+import ResizeObserver from 'resize-observer-polyfill';
 import getContentRect from '../utils/get-content-rect';
 import run from 'ember-runloop';
 

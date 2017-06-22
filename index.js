@@ -6,6 +6,19 @@ var path = require('path');
 module.exports = {
   name: 'ember-measure',
 
+  isDevelopingAddon() {
+    return true;
+  },
+
+  init() {
+    this._super && this._super.init.apply(this, arguments);
+
+    this.options = this.options || {};
+    this.options.babel = this.options.babel || {};
+    this.options.babel.plugins = this.options.babel.plugins || [];
+    // this.options.babel.plugins.push('transform-object-rest-spread');
+  },
+
   included() {
     this._super.included.apply(this, arguments);
 
@@ -14,12 +27,20 @@ module.exports = {
       return
     }
 
-    this.import(path.posix.join('vendor', 'resize-observer.js'));
+    this.import(path.posix.join('vendor', 'resize-observer-polyfill.js'));
   },
 
   treeForVendor() {
+    let babel = this.addons.find((addon) => addon.name === 'ember-cli-babel');
+    let options = babel.buildBabelOptions(this.options.babel)
     let nodeModulesPath = 'node_modules';
     let entry = path.posix.join(nodeModulesPath, 'resize-observer-polyfill', 'src', 'index.js');
-    return rollupExternalPackage('vendor', 'resize-observer', entry, []);
+    let rollupTree = rollupExternalPackage('vendor', 'resize-observer-polyfill', entry, [], options);
+
+    return babel.transpileTree(rollupTree, {
+      'ember-cli-babel': {
+        compileModules: true
+      }
+    });
   }
 };
