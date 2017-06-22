@@ -6,19 +6,6 @@ var path = require('path');
 module.exports = {
   name: 'ember-measure',
 
-  isDevelopingAddon() {
-    return true;
-  },
-
-  init() {
-    this._super && this._super.init.apply(this, arguments);
-
-    this.options = this.options || {};
-    this.options.babel = this.options.babel || {};
-    this.options.babel.plugins = this.options.babel.plugins || [];
-    // this.options.babel.plugins.push('transform-object-rest-spread');
-  },
-
   included() {
     this._super.included.apply(this, arguments);
 
