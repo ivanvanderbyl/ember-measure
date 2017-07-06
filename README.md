@@ -33,7 +33,7 @@ You can use this addon in two ways:
 ### 1. As a component:
 
 ```hbs
-{{dom-measure as |rect|}}
+{{#dom-measure as |rect|}}
   <p>I am {{rect.client.height}}px tall!</p>
 {{/dom-measure}}
 ```
