@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from './template';
 import WithContentRect from 'ember-measure/with-content-rect';
-import computed from 'ember-computed';
+import { computed } from '@ember/object';
 
-export default Ember.Component.extend(WithContentRect, {
+export default Component.extend(WithContentRect, {
   layout,
 
   tagName: 'div',
