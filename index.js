@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 var rollupExternalPackage = require('./lib/rollup-external-package');
 var path = require('path');

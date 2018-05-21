@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
 import ResizeObserver from 'resize-observer-polyfill';
 import getContentRect from '../utils/get-content-rect';
-import run from 'ember-runloop';
+import { join } from '@ember/runloop';
 
 const types = [
   'client',
@@ -11,14 +11,14 @@ const types = [
   'margin'
 ];
 
-export default Ember.Mixin.create({
+export default Mixin.create({
 
   rectTypes: types,
 
   init() {
     this._super(...arguments);
     this.runloopAwareMeasure = (entries) => {
-      run.join(this, this.measure, entries);
+      join(this, this.measure, entries);
     };
   },
 
